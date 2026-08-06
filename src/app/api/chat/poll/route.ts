@@ -147,7 +147,9 @@ export async function GET(req: Request) {
           const existingViewers = await prisma.viewer.findMany({
             where: { youtubeAuthorChannelId: { in: channelIds } }
           })
-          const existingViewerMap = new Map(existingViewers.map(v => [v.youtubeAuthorChannelId, v]))
+          const existingViewerMap = new Map<string, any>(
+            existingViewers.map((v: any) => [v.youtubeAuthorChannelId, v])
+          )
 
           // 3. Identify and create new viewers in bulk
           const newViewersData = []
@@ -168,7 +170,7 @@ export async function GET(req: Request) {
             })
             // Fetch newly created viewers to get their IDs and cache in map
             const newlyCreatedViewers = await prisma.viewer.findMany({
-              where: { youtubeAuthorChannelId: { in: newViewersData.map(v => v.youtubeAuthorChannelId) } }
+              where: { youtubeAuthorChannelId: { in: newViewersData.map((v: any) => v.youtubeAuthorChannelId) } }
             })
             for (const v of newlyCreatedViewers) {
               existingViewerMap.set(v.youtubeAuthorChannelId, v)
@@ -223,7 +225,7 @@ export async function GET(req: Request) {
           const existingIntervals = await prisma.streamViewerInterval.findMany({
             where: {
               streamId: stream.id,
-              OR: intervalKeys.map(k => ({
+              OR: intervalKeys.map((k: any) => ({
                 viewerId: k.viewerId,
                 bucketStartTime: k.bucketStartTime
               }))
