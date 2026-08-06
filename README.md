@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LoyalStream
 
-## Getting Started
+LoyalStream is a production-ready Next.js application designed to track YouTube live stream viewer engagement in real-time, calculate watch times using a rolling 5-minute bucket algorithm, and compile a public Loyal Viewers Leaderboard for your channel.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Google OAuth Login:** Streamers securely authenticate with Google to access active live broadcasts.
+- **YouTube Chat Polling:** Background cron workers fetch live chat messages using nextPageTokens and calculate watcher intervals.
+- **Watch Credit Algorithm:** Reward viewers with 1 active watch interval (5 minutes) for every 5-minute bucket in which they send 2 or more chat messages.
+- **Public Leaderboards:** Viewers search for their name on custom slug URL paths (e.g. `/leaderboard/your-custom-slug`) and track their rankings.
+- **Prisma & Supabase:** Fully integrated with Prisma ORM and Supabase PostgreSQL.
+
+## Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+DATABASE_URL="postgresql://postgres:password@db.supabase.co:5432/postgres?schema=public"
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-generated-nextauth-secret-key"
+GOOGLE_CLIENT_ID="your-google-oauth-client-id"
+GOOGLE_CLIENT_SECRET="your-google-oauth-client-secret"
+CRON_SECRET="optional-cron-security-token"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Quick Start
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Install dependencies:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Initialize and sync database schema:
+```bash
+npx prisma db push
+```
 
-## Learn More
+3. Run local development server:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open `http://localhost:3000` to access the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Vercel Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Create a new project on Vercel and import this repository.
+2. Configure all environment variables in the Vercel project settings.
+3. Vercel automatically reads the `vercel.json` and schedules a cron job calling `/api/chat/poll` every 5 minutes.
+4. Ensure you set the `Authorization: Bearer <your-cron-secret>` header for security if `CRON_SECRET` is defined.

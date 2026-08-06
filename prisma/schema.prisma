@@ -1,0 +1,74 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                 String   @id @default(uuid())
+  name               String?
+  email              String   @unique
+  googleId           String?  @unique
+  youtubeChannelId   String?  @unique
+  googleRefreshToken String?
+  customSlug         String   @unique
+  themeBackground    String?
+  createdAt          DateTime @default(now())
+  streams            Stream[]
+}
+
+enum StreamStatus {
+  LIVE
+  ENDED
+}
+
+model Stream {
+  id              String                 @id @default(uuid())
+  userId          String
+  youtubeStreamId String                 @unique
+  title           String
+  status          StreamStatus           @default(LIVE)
+  liveChatId      String?
+  nextPageToken   String?
+  startedAt       DateTime               @default(now())
+  endedAt         DateTime?
+  user            User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  intervals       StreamViewerInterval[]
+}
+
+model Viewer {
+  id                     String                 @id @default(uuid())
+  youtubeAuthorChannelId String                 @unique
+  displayName            String
+  profileImageUrl        String?
+  intervals              StreamViewerInterval[]
+}
+
+model StreamViewerInterval {
+  id              String   @id @default(uuid())
+  streamId        String
+  viewerId        String
+  bucketStartTime DateTime
+  messageCount    Int      @default(0)
+  isQualified     Boolean  @default(false)
+  stream          Stream   @relation(fields: [streamId], references: [id], onDelete: Cascade)
+  viewer          Viewer   @relation(fields: [viewerId], references: [id], onDelete: Cascade)
+
+  @@unique([streamId, viewerId, bucketStartTime])
+}
+
+model LeaderboardCache {
+  id                 String   @id @default(uuid())
+  youtubeChannelId   String
+  viewerId           String
+  displayName        String
+  profileImageUrl    String?
+  streamsAttended    Int
+  activeWatchMinutes Int
+  rank               Int
+  updatedAt          DateTime @updatedAt
+
+  @@unique([youtubeChannelId, viewerId])
+}
