@@ -10,7 +10,7 @@ export default async function Home() {
   return (
     <div className="flex-1 flex flex-col items-center py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative">
       <div className="text-center max-w-3xl mx-auto flex flex-col items-center mb-16 animate-float">
-        <span className="px-4 py-1.5 text-[10px] font-extrabold text-[#d0eaeb] dark:text-cyan-400 bg-[#2c372c] dark:bg-cyan-950/20 border border-[#2c372c] dark:border-cyan-800/30 rounded-full mb-6 uppercase tracking-widest">
+        <span className="px-4 py-1.5 text-[10px] font-extrabold text-[#d0eaeb] dark:text-cyan-400 bg-[#18181b] dark:bg-cyan-950/20 border border-[#18181b] dark:border-cyan-800/30 rounded-full mb-6 uppercase tracking-widest">
           Automated Viewership Tracking
         </span>
         <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight font-display mb-6">
