@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f2f4f8;
-  --foreground: #05060b;
+  --background: #f8fafc;
+  --foreground: #0f172a;
   
   /* Cyberpunk gaming palette (light variant) */
-  --neon-cyan: #009cb4;
-  --neon-violet: #5400c2;
-  --neon-fuchsia: #b800a0;
-  --neon-green: #00aa55;
-  --neon-orange: #d14f00;
+  --neon-cyan: #0284c7;
+  --neon-violet: #6d28d9;
+  --neon-fuchsia: #be185d;
+  --neon-green: #15803d;
+  --neon-orange: #c2410c;
   
-  --card-bg: rgba(255, 255, 255, 0.85);
-  --card-border: rgba(0, 156, 180, 0.15);
-  --card-border-hover: rgba(184, 0, 160, 0.45);
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-border: rgba(15, 23, 42, 0.08);
+  --card-border-hover: rgba(190, 24, 93, 0.4);
 }
 
 .dark {
