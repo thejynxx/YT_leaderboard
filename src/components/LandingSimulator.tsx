@@ -50,11 +50,13 @@ export default function LandingSimulator() {
   })
 
   const [alert, setAlert] = useState<string | null>(null)
-  const chatEndRef = useRef<HTMLDivElement>(null)
+  const chatContainerRef = useRef<HTMLDivElement>(null)
 
-  // Auto-scroll chat
+  // Auto-scroll chat internally inside the container only
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
+    }
   }, [messages])
 
   // Simulation Interval
@@ -131,14 +133,13 @@ export default function LandingSimulator() {
             </span>
           </div>
 
-          <div className="flex-1 overflow-y-auto space-y-2.5 py-4 scrollbar-none pr-1">
+          <div ref={chatContainerRef} className="flex-1 overflow-y-auto space-y-2.5 py-4 scrollbar-none pr-1">
             {messages.map((msg) => (
               <div key={msg.id} className="text-xs bg-slate-900/30 border border-slate-900/20 px-3 py-2 rounded-xl">
                 <span className={`font-bold ${msg.color} mr-1.5`}>{msg.displayName}:</span>
                 <span className="text-slate-300">{msg.message}</span>
               </div>
             ))}
-            <div ref={chatEndRef} />
           </div>
 
           <div className="relative pt-3 border-t border-slate-900 flex items-center gap-2">
