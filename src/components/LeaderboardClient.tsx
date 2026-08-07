@@ -124,7 +124,7 @@ export default function LeaderboardClient({
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white/40 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 focus:border-cyan-500 focus:shadow-[0_0_15px_rgba(0,242,254,0.15)] rounded-xl pl-10 pr-4 py-3 text-sm focus:outline-none transition-all text-slate-900 dark:text-white font-medium"
+              className="w-full bg-white dark:bg-slate-950/40 border border-slate-300 dark:border-slate-900 focus:border-cyan-500 focus:shadow-[0_0_15px_rgba(0,242,254,0.15)] rounded-xl pl-10 pr-4 py-3 text-sm focus:outline-none transition-all text-slate-900 dark:text-white font-medium"
               placeholder="Search handle..."
             />
           </div>

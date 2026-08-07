@@ -154,15 +154,15 @@ export default function DashboardClient({
                   <span className="px-3 py-1 text-xs font-bold text-red-400 bg-red-950/30 border border-red-500/30 rounded-full glow-tag-red uppercase tracking-wider inline-block">
                     ACTIVE LIVE
                   </span>
-                  <h3 className="text-lg font-bold text-white mt-3 font-display">{activeStream.title}</h3>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mt-3 font-display">{activeStream.title}</h3>
                   <p className="text-xs text-slate-500 font-mono">STREAM ID: {activeStream.youtubeStreamId}</p>
                 </div>
               ) : (
                 <div className="space-y-1">
-                  <span className="px-3 py-1 text-xs font-bold text-slate-400 bg-slate-900/60 border border-slate-800 rounded-full uppercase tracking-wider inline-block">
+                  <span className="px-3 py-1 text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-200 dark:bg-slate-900/60 border border-slate-300 dark:border-slate-800 rounded-full uppercase tracking-wider inline-block">
                     STANDBY
                   </span>
-                  <h3 className="text-lg font-bold text-slate-300 mt-3 font-display">No Active Stream Logged</h3>
+                  <h3 className="text-lg font-bold text-slate-700 dark:text-slate-300 mt-3 font-display">No Active Stream Logged</h3>
                   <p className="text-xs text-slate-500">System ready to register live chat viewers.</p>
                 </div>
               )}
@@ -214,7 +214,7 @@ export default function DashboardClient({
 
             <form onSubmit={handleUpdateSlug} className="space-y-4">
               <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest block">
+                <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest block">
                   Leaderboard URL Slug
                 </label>
                 <div className="flex gap-2">
@@ -222,7 +222,7 @@ export default function DashboardClient({
                     type="text"
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
-                    className="flex-1 bg-slate-950 border border-slate-900 focus:border-cyan-500 focus:shadow-[0_0_15px_rgba(0,242,254,0.15)] rounded-xl px-4 py-3 text-sm focus:outline-none transition-all text-white font-medium"
+                    className="flex-1 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-900 focus:border-cyan-500 focus:shadow-[0_0_15px_rgba(0,242,254,0.15)] rounded-xl px-4 py-3 text-sm focus:outline-none transition-all text-slate-900 dark:text-white font-medium"
                     placeholder="custom-slug"
                     required
                   />
@@ -247,14 +247,14 @@ export default function DashboardClient({
               <label className="text-xs font-bold text-slate-400 uppercase tracking-widest block">
                 Public Link
               </label>
-              <div className="flex items-center gap-2 bg-slate-950/60 border border-slate-900 rounded-xl p-3 justify-between shadow-inner">
-                <span className="text-xs text-slate-400 truncate max-w-[200px] font-mono">
+              <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-xl p-3 justify-between shadow-inner">
+                <span className="text-xs text-slate-600 dark:text-slate-400 truncate max-w-[200px] font-mono">
                   /leaderboard/{initialUser.customSlug}
                 </span>
                 <div className="flex gap-2">
                   <button
                     onClick={handleCopyLink}
-                    className="p-2 bg-slate-900/60 border border-slate-800 hover:border-cyan-500 rounded-lg hover:text-cyan-400 transition-all text-slate-400 cursor-pointer"
+                    className="p-2 bg-slate-100/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-cyan-500 rounded-lg hover:text-cyan-400 dark:hover:text-cyan-400 transition-all text-slate-500 dark:text-slate-400 cursor-pointer"
                   >
                     {isCopied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
                   </button>
@@ -262,7 +262,7 @@ export default function DashboardClient({
                     href={`/leaderboard/${initialUser.customSlug}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="p-2 bg-slate-900/60 border border-slate-800 hover:border-cyan-500 rounded-lg hover:text-cyan-400 transition-all text-slate-400 cursor-pointer"
+                    className="p-2 bg-slate-100/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-cyan-500 rounded-lg hover:text-cyan-400 dark:hover:text-cyan-400 transition-all text-slate-500 dark:text-slate-400 cursor-pointer"
                   >
                     <ExternalLink className="w-4 h-4" />
                   </a>
@@ -279,7 +279,7 @@ export default function DashboardClient({
 
             <form onSubmit={handleUpdateTheme} className="space-y-6">
               <div className="space-y-3">
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest block">
+                <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest block">
                   Select Background Preset
                 </label>
                 
@@ -291,7 +291,7 @@ export default function DashboardClient({
                     className={`relative aspect-video rounded-xl border flex flex-col items-center justify-center text-xs font-semibold overflow-hidden transition-all cursor-pointer ${
                       selectedBg === "none"
                         ? "border-violet-500 bg-violet-950/20 text-violet-400 ring-2 ring-violet-500/20"
-                        : "border-slate-800 bg-slate-950 text-slate-500 hover:border-slate-700"
+                        : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-500 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700"
                     }`}
                   >
                     <span>None</span>
@@ -306,7 +306,7 @@ export default function DashboardClient({
                       className={`relative aspect-video rounded-xl border overflow-hidden transition-all group cursor-pointer ${
                         selectedBg === bg
                           ? "border-violet-500 ring-2 ring-violet-500/20"
-                          : "border-slate-800 hover:border-slate-700"
+                          : "border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
                       }`}
                       title={bg.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
                     >
