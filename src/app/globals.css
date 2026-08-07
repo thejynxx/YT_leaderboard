@@ -358,3 +358,108 @@ body {
     transform: translateY(12px) scale(1.05);
   }
 }
+
+/* Animated Face Error Page Styles */
+.my-custom-face-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  background: transparent;
+  color: var(--foreground);
+}
+
+.my-custom-face-container .face {
+  width: 160px;
+}
+
+.my-custom-face-container .face__eyes,
+.my-custom-face-container .face__eye-lid,
+.my-custom-face-container .face__mouth-left,
+.my-custom-face-container .face__mouth-right,
+.my-custom-face-container .face__nose,
+.my-custom-face-container .face__pupil {
+  animation: face_eyes 1s 0.3s forwards;
+}
+
+.my-custom-face-container .face__eye-lid,
+.my-custom-face-container .face__pupil {
+  animation-duration: 4s;
+  animation-delay: 1.3s;
+  animation-iteration-count: infinite;
+}
+
+.my-custom-face-container .face__eye-lid {
+  animation-name: face_eye-lid;
+}
+.my-custom-face-container .face__mouth-left {
+  animation-name: face_mouth-left;
+}
+.my-custom-face-container .face__mouth-right {
+  animation-name: face_mouth-right;
+}
+.my-custom-face-container .face__nose {
+  animation-name: face_nose;
+}
+.my-custom-face-container .face__pupil {
+  animation-name: face_pupil;
+}
+
+@keyframes face_eye-lid {
+  0%, 40%, 45%, 100% {
+    transform: translateY(0);
+  }
+  42.5% {
+    transform: translateY(17.5px);
+  }
+}
+
+@keyframes face_eyes {
+  from {
+    transform: translateY(112.5px);
+  }
+  to {
+    transform: translateY(15px);
+  }
+}
+
+@keyframes face_pupil {
+  0%, 37.5%, 40%, 45%, 87.5%, 100% {
+    stroke-dashoffset: 0;
+    transform: translate(0, 0);
+  }
+  12.5%, 25%, 62.5%, 75% {
+    transform: translate(-35px, 0);
+  }
+  42.5% {
+    stroke-dashoffset: 35;
+    transform: translate(0, 17.5px);
+  }
+}
+
+@keyframes face_mouth-left {
+  from, 50% {
+    stroke-dashoffset: -102;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes face_mouth-right {
+  from, 50% {
+    stroke-dashoffset: 102;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes face_nose {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(0, 22.5px);
+  }
+}
