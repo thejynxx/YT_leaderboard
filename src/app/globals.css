@@ -212,9 +212,8 @@ body {
 /* 3D Contact Card Styles */
 .contact-card {
   perspective: 1000px;
-  width: 100%;
-  max-w: 380px;
-  height: 520px;
+  width: 320px;
+  height: 320px;
 }
 
 .contact-card-inner {
@@ -262,8 +261,8 @@ body {
   position: absolute;
   content: ' ';
   display: block;
-  width: 150px;
-  height: 160%;
+  width: 160px;
+  height: 180%;
   background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-fuchsia), var(--neon-violet), transparent);
   animation: rotation_481 6000ms infinite linear;
 }
