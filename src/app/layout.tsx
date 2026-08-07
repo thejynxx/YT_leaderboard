@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Inter, Outfit } from "next/font/google"
 import { Providers } from "@/components/providers"
+import ThemeToggle from "@/components/ThemeToggle"
 import "./globals.css"
 
 const inter = Inter({
@@ -25,13 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable} dark antialiased`} suppressHydrationWarning>
-      <body className="min-h-screen bg-[#05060b] text-[#f2f4f8] flex flex-col font-sans" suppressHydrationWarning>
+      <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col font-sans" suppressHydrationWarning>
         <Providers>
           <div className="relative w-full overflow-hidden flex flex-col min-h-screen">
             <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
             <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-fuchsia-600/5 rounded-full blur-3xl -z-10 animate-pulse-slow" style={{ animationDelay: "2.5s" }}></div>
             
-            <header className="border-b border-cyan-950/30 bg-[#05060b]/85 backdrop-blur-md sticky top-0 z-50">
+            <header className="border-b border-cyan-950/30 bg-[var(--background)]/85 backdrop-blur-md sticky top-0 z-50">
               <div className="h-0.5 w-full bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-violet-600"></div>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -43,6 +44,7 @@ export default function RootLayout({
                   <a href="/" className="text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-cyan-400 transition-colors">Home</a>
                   <a href="/dashboard" className="text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-cyan-400 transition-colors">Dashboard</a>
                   <a href="/contact" className="text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-cyan-400 transition-colors">Contact</a>
+                  <ThemeToggle />
                 </nav>
               </div>
             </header>
