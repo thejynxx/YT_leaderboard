@@ -115,14 +115,14 @@ export default function LandingSimulator() {
   })
 
   return (
-    <div className="w-full glass-card p-6 md:p-8 rounded-3xl border border-slate-900 shadow-2xl relative overflow-hidden">
+    <div className="w-full bg-[#0a0d1a] text-slate-100 p-6 md:p-8 rounded-3xl border border-slate-900 shadow-2xl relative overflow-hidden dark">
       {/* Background Neon Grid Decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-950/20 via-slate-950 to-slate-950 -z-10"></div>
       
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         
         {/* 1. Live Chat Simulator Column (4 Cols) */}
-        <div className="lg:col-span-4 bg-slate-950/70 border border-slate-900 rounded-2xl p-4 flex flex-col h-[340px] justify-between shadow-inner">
+        <div className="lg:col-span-4 bg-[#04060c] border border-slate-900 rounded-2xl p-4 flex flex-col h-[340px] justify-between shadow-inner">
           <div className="flex items-center justify-between pb-3 border-b border-slate-900">
             <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
@@ -151,7 +151,7 @@ export default function LandingSimulator() {
         </div>
 
         {/* 2. Middle Algorithmic Validator (4 Cols) */}
-        <div className="lg:col-span-4 bg-slate-950/50 border border-cyan-950/20 rounded-2xl p-5 flex flex-col justify-between h-[340px]">
+        <div className="lg:col-span-4 bg-[#04060c] border border-slate-900 rounded-2xl p-5 flex flex-col justify-between h-[340px]">
           <div>
             <div className="flex items-center gap-2 pb-3 border-b border-slate-900">
               <Clock className="w-4 h-4 text-cyan-400" />
@@ -159,7 +159,7 @@ export default function LandingSimulator() {
             </div>
             
             <div className="mt-4 space-y-4">
-              <div className="p-3.5 bg-slate-950 border border-slate-900 rounded-xl space-y-2">
+              <div className="p-3.5 bg-[#020306] border border-slate-900 rounded-xl space-y-2">
                 <div className="flex justify-between items-center text-[10px] text-slate-500 font-mono">
                   <span>Rolling Bucket Timer</span>
                   <span className="text-cyan-400 animate-pulse font-bold">4m 59s</span>
@@ -202,7 +202,7 @@ export default function LandingSimulator() {
         </div>
 
         {/* 3. Live Leaderboard Simulator (4 Cols) */}
-        <div className="lg:col-span-4 bg-slate-950/70 border border-slate-900 rounded-2xl p-4 flex flex-col h-[340px] justify-between shadow-inner">
+        <div className="lg:col-span-4 bg-[#04060c] border border-slate-900 rounded-2xl p-4 flex flex-col h-[340px] justify-between shadow-inner">
           <div className="flex items-center justify-between pb-3 border-b border-slate-900">
             <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
               <Trophy className="w-3.5 h-3.5 text-yellow-500" />
@@ -222,7 +222,7 @@ export default function LandingSimulator() {
                   className={`flex items-center justify-between p-2.5 rounded-xl border text-xs transition-all duration-300 ${
                     rank === 1 
                       ? "bg-yellow-950/10 border-yellow-900/30 shadow-[0_0_10px_rgba(251,191,36,0.05)]" 
-                      : "bg-slate-900/20 border-slate-900/40"
+                      : "bg-[#020306]/40 border-slate-900/40"
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
@@ -231,7 +231,7 @@ export default function LandingSimulator() {
                     }`}>
                       #{rank}
                     </span>
-                    <div className="w-6 h-6 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-[10px] font-bold text-slate-400 uppercase">
+                    <div className="w-6 h-6 rounded-full bg-[#020306] border border-slate-800 flex items-center justify-center text-[10px] font-bold text-slate-400 uppercase">
                       {viewer.displayName.slice(0, 2)}
                     </div>
                     <span className="font-bold text-slate-200">{viewer.displayName}</span>
