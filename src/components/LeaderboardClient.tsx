@@ -86,7 +86,7 @@ export default function LeaderboardClient({
             <p className="text-sm text-slate-500 dark:text-slate-400">
               Top-ranked community members based on active watch credit thresholds.
             </p>
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-cyan-100/30 dark:bg-cyan-950/30 border border-cyan-200 dark:border-cyan-800/30 text-cyan-600 dark:text-cyan-400 uppercase tracking-widest font-mono">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-cyan-950/30 border border-slate-200 dark:border-cyan-800/30 text-slate-700 dark:text-cyan-400 uppercase tracking-widest font-mono">
               {dateRange}
             </span>
           </div>
